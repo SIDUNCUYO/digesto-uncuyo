@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0037)https://bdigital.uncu.edu.ar/digesto/ -->
 <html lang="en">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -149,8 +150,8 @@
             <div class="row">
                 <div class="col-md-10 " style="color:#000;">
                     <h2 class="fw-bold">Digesto Administrativo</h2>
-                    <p style="color:#000">El Digesto Universitario es un compendio ordenado y sistematizado de todas las normas emanadas de el/la Rector/a, el Consejo Superior y la Asamblea Universitaria de la Universidad Nacional de Cuyo.<br/>
-                        La publicidad de los distintos actos administrativos tienen por finalidad la transparencia de los mismos. 
+                    <p style="color:#000">El Digesto Universitario es un compendio ordenado y sistematizado de todas las normas emanadas de el/la Rector/a, el Consejo Superior y la Asamblea Universitaria de la Universidad Nacional de Cuyo.<br/> La publicidad de los distintos
+                        actos administrativos tienen por finalidad la transparencia de los mismos.
                         <a type="" href="#" class="pe-auto link" data-bs-toggle="modal" data-bs-target="#myModal">(+ info)</a>
                     </p>
 
@@ -211,7 +212,7 @@
                                     <span class="badge text-bg-primary"> {{facet.count}}</span>
                                 </a>
                                     </div>
-                                    <a v-if="n==7" @click.prevent="showmore($event, facetfield)">...</a>
+                                    <a href="#" v-if="n==7" @click.prevent="showmore($event, facetfield)" title="se muestran solamente los 30 primeros grupos">...</a>
                                     <span v-if=" (n>=7)" :class="facetfield" style="display:none">
                                 <a class="a-hover" @click.prevent="addfilter(facet.value, facetfield );">
                                     {{facet.value}}
@@ -255,85 +256,86 @@
                                 <div class="rect5"></div>
                             </div>
                         </div>
-                        
+
                         <div class="table-responsive-md">
-                        <table v-if=!loading class="table">
-                            <thead>
-                                <!-- <th rowspan="1" colspan="1">#ID</th> -->
-                                <th rowspan="1" colspan="1" class="d-none d-md-block">Tipo</th>
-                                <th rowspan="1" colspan="1">Título</th>
-                                <th rowspan="1" colspan="1" class="d-none d-md-block">Generador</th>
+                            <table v-if=!loading class="table">
+                                <thead>
+                                    <!-- <th rowspan="1" colspan="1">#ID</th> -->
+                                    <th rowspan="1" colspan="1" class="d-none d-md-block">Tipo</th>
+                                    <th rowspan="1" colspan="1">Título</th>
+                                    <th rowspan="1" colspan="1" class="d-none d-md-block">Generador</th>
 
-                                <th rowspan="1" colspan="1">Fecha</th>
+                                    <th rowspan="1" colspan="1">Fecha</th>
 
-                            </thead>
-                            <tbody>
-                                <tr v-for="(rec,index) in records">
-                                
-                                    <td class="d-none d-md-block">
-                                        {{ rec.rawData.tipo_str }}
-                                        <div class="small"><small class="text-muted small">{{ rec.id }}</small>
-                                        </div>
-                                    </td>
-                                    <td><div class="d-sm-none">
-                                        {{ rec.rawData.tipo_str }}</div> 
-                                        <a target="fichareg" :href="urlrecords+rec.rawData.fecha_str.substring(0,4)+'/'+rec.rawData.fecha_str.substring(5,7)+'/'+rec.rawData.archivo_str" class="link">{{ rec.title }}</a>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(rec,index) in records">
+
+                                        <td class="d-none d-md-block">
+                                            {{ rec.rawData.tipo_str }}
+                                            <div class="small"><small class="text-muted small">{{ rec.id }}</small>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-sm-none">
+                                                {{ rec.rawData.tipo_str }}</div>
+                                            <a target="fichareg" :href="urlrecords+rec.rawData.fecha_str.substring(0,4)+'/'+rec.rawData.fecha_str.substring(5,7)+'/'+rec.rawData.archivo_str" class="link">{{ rec.title }}</a>
 
 
-                                        <blockquote v-if="rec.rawData.descripcion_str">
-                                            {{rec.rawData.descripcion_str}}
-                                        </blockquote>
-                                       
-                        <span class="badge rounded-pill text-bg-success" v-show="rec.rawData.estado_str=='V'">
+                                            <blockquote v-if="rec.rawData.descripcion_str">
+                                                {{rec.rawData.descripcion_str}}
+                                            </blockquote>
+
+                                            <span class="badge rounded-pill text-bg-success" v-show="rec.rawData.estado_str=='V'">
                              Vigente
                         </span>
-                        <span class="badge rounded-pill text-bg-danger" v-show="rec.rawData.estado_str=='D'"> Derogada</span>
-                       <span class="badge rounded-pill text-bg-danger" v-show="rec.rawData.estado_str=='P'"> Parcialmente Derogada </span>
-                   <span class="badge rounded-pill text-bg-secondary" v-show="rec.rawData.estado_str=='A'"> Actualizada </span>
-                                    </td>
-                                    <td class="d-none d-md-block">
-                                        {{ rec.rawData.dep_genera_str }}
-                                    </td>
-                                    <td>{{ formatfecha(rec.rawData.fecha_str) }}
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+                                            <span class="badge rounded-pill text-bg-danger" v-show="rec.rawData.estado_str=='D'"> Derogada</span>
+                                            <span class="badge rounded-pill text-bg-danger" v-show="rec.rawData.estado_str=='P'"> Parcialmente Derogada </span>
+                                            <span class="badge rounded-pill text-bg-secondary" v-show="rec.rawData.estado_str=='A'"> Actualizada </span>
+                                        </td>
+                                        <td class="d-none d-md-block">
+                                            {{ rec.rawData.dep_genera_str }}
+                                        </td>
+                                        <td>{{ formatfecha(rec.rawData.fecha_str) }}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                    </div>
-                    <!--paginador nuevo-->
-            <div class="container">
-                <div class="row well well-sm" v-show=!loading>
-                    <div class="col-md-4 col-md-offset-2">
-                        <paginate ref="paginarbottom" v-show="found>0" v-model=page :page-count="pagecount" :container-class="pagination" prev-text="&laquo;" next-text="&raquo;" :click-handler="changepage" page-class="page-item" page-link-class="page-link" prev-link-class="page-link"
-                            next-link-class="page-link">
-                        </paginate>
+                        </div>
+                        <!--paginador nuevo-->
+                        <div class="container">
+                            <div class="row well well-sm" v-show=!loading>
+                                <div class="col-md-4 col-md-offset-2">
+                                    <paginate ref="paginarbottom" v-show="found>0" v-model=page :page-count="pagecount" :container-class="pagination" prev-text="&laquo;" next-text="&raquo;" :click-handler="changepage" page-class="page-item" page-link-class="page-link" prev-link-class="page-link"
+                                        next-link-class="page-link">
+                                    </paginate>
 
-                    </div>
-                    <!--Fin Paginador nuevo-->
+                                </div>
+                                <!--Fin Paginador nuevo-->
 
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!--Footer-->
-    <div id="footer" class="container-fluid" style="background-color:rgb(212, 212, 212);">
-        <footer class="d-flex flex-wrap justify-content-evenly align-items-center py-2 my-2">
-            <div class="col-md-4 d-flex align-content-center">
-                <span class="mb-2 ms-3"><a class="hover-brand" href="https://sid.uncu.edu.ar/sid/aplicaciones"><img class="img-fluid" style="width: 170px;" src="https://sid.uncu.edu.ar/sid/cdhexplorador/img/ecologo color.png"></a></span>
+            <!--Footer-->
+            <div id="footer" class="container-fluid" style="background-color:rgb(212, 212, 212);">
+                <footer class="d-flex flex-wrap justify-content-evenly align-items-center py-2 my-2">
+                    <div class="col-md-4 d-flex align-content-center">
+                        <span class="mb-2 ms-3"><a class="hover-brand" href="https://sid.uncu.edu.ar/sid/aplicaciones"><img class="img-fluid" style="width: 170px;" src="https://sid.uncu.edu.ar/sid/cdhexplorador/img/ecologo color.png"></a></span>
 
+                    </div>
+
+                    <ul class="nav col-md-4 justify-content-center list-unstyled d-flex">
+                        <li class="ms-3 mb-2">
+                            <a class="text-muted hover-brand" href="https://uncuyo.edu.ar"><img src="https://sid.uncu.edu.ar/sid/cdhexplorador/img/uncuyo color.png" style="width: 120px ;"></a>
+                        </li>
+
+                    </ul>
+                </footer>
             </div>
-
-            <ul class="nav col-md-4 justify-content-center list-unstyled d-flex">
-                <li class="ms-3 mb-2">
-                    <a class="text-muted hover-brand" href="https://uncuyo.edu.ar"><img src="https://sid.uncu.edu.ar/sid/cdhexplorador/img/uncuyo color.png" style="width: 120px ;"></a>
-                </li>
-
-            </ul>
-        </footer>
-    </div>
 
 </body>
 
@@ -349,29 +351,29 @@
 <!--<script src="./js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"> -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog modal-dialog-left">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title"><strong>Filtros</strong>
-          </h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"><strong>Filtros</strong>
+                </h4>
+            </div>
+            <div class="modal-body fs-6">
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Tipo: </strong>Hace referencia al tipo de norma: resolución, ordenanza, circular, declaración, etc.</li>
+                    <li class="list-group-item"><strong>Año: </strong>Hace referencia al año que fue emitido el acto administrativo</li>
+                    <li class="list-group-item"><strong>Aplicado: </strong> Hace referencia al ámbito de aplicación del acto administrativo.</li>
+                    <li class="list-group-item"><strong>Generado: </strong>Hace referencia a la dependencia que generó el acto administrativo</li>
+                    <li class="list-group-item"><strong>Categoría: </strong> Hace referencia al criterio de clasificación de los actos administrativos generados: pagos, incentivos, designación etc.</li>
+                </ul>
+                <div class="lead">
+                    Las Columnas tipo y generado se ocultan automaticamente en vista de teléfonos o pantallas pequeñas.
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+            </div>
         </div>
-        <div class="modal-body fs-6">
-              <ul class="list-group">
-                  <li class="list-group-item"><strong>Tipo: </strong>Hace referencia al tipo de norma: resolución, ordenanza, circular, declaración, etc.</li>
-                  <li class="list-group-item"><strong>Año: </strong>Hace referencia al año que fue emitido el acto administrativo</li> 
-                  <li class="list-group-item"><strong>Aplicado: </strong> Hace referencia al ámbito de aplicación del acto administrativo.</li> 
-                  <li class="list-group-item"><strong>Generado: </strong>Hace referencia a la dependencia que generó el acto administrativo</li> 
-                  <li class="list-group-item"><strong>Categoría: </strong> Hace referencia al criterio de clasificación de los actos administrativos generados: pagos, incentivos, designación etc.</li> 
-              </ul>
-              <div class="lead">
-                Las Columnas tipo y generado se ocultan automaticamente en vista de teléfonos o pantallas pequeñas.
-              </div>
-     </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-        </div> 
-      </div>
     </div>
-  </div>
+</div>
 
 </body>
 
