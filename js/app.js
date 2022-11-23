@@ -60,8 +60,8 @@ var app = new Vue({
             else return f;
         },
         showmore: function(e, que) {
-            $(e.target).toggle();
-            $('.' + que).toggle('slow');
+            jQuery(e.target).toggle();
+            jQuery('.' + que).toggle('slow');
 
         },
         delfilter: function(indexfilter) {
