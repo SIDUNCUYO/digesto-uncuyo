@@ -5,4 +5,4 @@ app para visualizar el digesto de la uncuyo consumiento datos desde el solr de b
  
  [Digesto en Bdigital](https://bdigital.uncu.edu.ar/digesto)
  
-[Digesto](https://digesto.uncu.edu.ar)
+[Digesto](https://digesto.uncuyo.edu.ar)
